@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>Markdown Previewer</title>
+    <script src="./js/marked.js"></script>
+
+  	<script>
+     function updatePreview() {
+		let previewElement = document.getElementById("preview");
+		let editorValue = document.getElementById("editor").value;
+		let markedUpHTML = marked(editorValue);
+		previewElement.innerHTML = markedUpHTML;
+	}
+
+	function setDefault() {
+      let defaultText = `
+ # Heading
+ ## Heading 2
+
+ [Visit my website](https://github.com/philsmirnoff)
+
+ <dl>
+  <dt>Definition list</dt>
+  <dd>Is something that people use sometimes.</dd>
+
+  <dt>Markdown in HTML</dt>
+  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+ </dl>
+
+
+\`This is an example of inline code\`
+  
+ - list item 1
+ - list item 2
+ - list item 3
+  
+ > This is the example of a block quote
+
+![Baloons](https://jan.ucc.nau.edu/lrm22/pixels2bytes/balloons.jpg)
+
+ **This is the bolded text**
+  
+  \`\`\`
+    function exampleOf() {
+    	return multiLineCodeBlock;
+    }
+  \'\'\`
+ 
+`;
+        let editorField = document.getElementById("editor");
+		let previewElement = document.getElementById("preview");
+		editorField.value = defaultText;
+		previewElement.innerHTML = marked(defaultText);
+	}
+	
+	</script>
+  </head>
+  <body onload="setDefault()">
+  	<div class="container-fluid">
+  		<div class="row">
+  			<div class="col text-center text-black bg-success">
+  			 	<h1>Markdown Previewer for FreeCodeCamp certifications</h1>
+		 </div>
+  		</div>
+  		<div class="row">
+          <div class="col-6 bg-primary d-flex flex-column">
+          	<h2 class="text-center my-3">The Editor</h2>
+          	<div class="form-group flex-grow-1 d-flex flex-column">
+          	    <textarea id="editor" onkeyup="updatePreview()" class="form-control flex-grow-1"></textarea>
+          </div>
+          </div>
+          <div class="col-6 bg-danger">
+          	<h2 class="text-center my-3">The Markdown</h2>
+          	<div id="preview"></div>
+       </div>
+  	</div>
+</div>
+  
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+  </body>
+</html>
